@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Detail - College Lost & Found</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <i data-lucide="map-pin" class="h-8 w-8 text-blue-600"></i>
+                    <span class="text-xl font-bold text-gray-900">College Lost & Found</span>
+                </a>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                    <a href="browse.html" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md text-sm font-medium transition-colors">Browse Items</a>
+                    <a href="submit.html" class="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors">Report Item</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Item Detail -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div id="item-loading" class="text-center py-12">
+            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <p class="text-gray-600">Loading item details...</p>
+        </div>
+
+        <div id="item-detail" class="hidden">
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2">
+                        <img id="item-image" class="w-full h-64 md:h-full object-cover" alt="Item image" />
+                    </div>
+                    
+                    <div class="md:w-1/2 p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span id="item-status" class="px-3 py-1 rounded-full text-sm font-medium"></span>
+                            <span id="item-date" class="text-sm text-gray-500"></span>
+                        </div>
+                        
+                        <h1 id="item-title" class="text-2xl font-bold text-gray-900 mb-2"></h1>
+                        
+                        <div class="flex items-center text-gray-600 mb-4">
+                            <i data-lucide="map-pin" class="h-4 w-4 mr-1"></i>
+                            <span id="item-location"></span>
+                        </div>
+                        
+                        <div class="flex items-center text-gray-600 mb-6">
+                            <i data-lucide="tag" class="h-4 w-4 mr-1"></i>
+                            <span id="item-category"></span>
+                        </div>
+                        
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Description</h3>
+                        <p id="item-description" class="text-gray-700 mb-6"></p>
+                        
+                        <div class="border-t pt-6">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Contact Information</h3>
+                            <div class="space-y-2">
+                                <div class="flex items-center">
+                                    <i data-lucide="user" class="h-4 w-4 text-gray-400 mr-2"></i>
+                                    <span id="item-contact-name" class="text-gray-700"></span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i data-lucide="mail" class="h-4 w-4 text-gray-400 mr-2"></i>
+                                    <span id="item-contact-email" class="text-gray-700"></span>
+                                </div>
+                                <div id="item-contact-phone-container" class="hidden flex items-center">
+                                    <i data-lucide="phone" class="h-4 w-4 text-gray-400 mr-2"></i>
+                                    <span id="item-contact-phone" class="text-gray-700"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <button
+                                id="contact-btn"
+                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+                            >
+                                Contact Reporter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="item-not-found" class="hidden text-center py-12">
+            <i data-lucide="search" class="h-16 w-16 text-gray-300 mx-auto mb-4"></i>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Item not found</h3>
+            <p class="text-gray-600 mb-6">The item you're looking for doesn't exist or has been removed.</p>
+            <a href="browse.html" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+                Browse All Items
+            </a>
+        </div>
+    </div>
+
+    <!-- Load storage first, then item detail script -->
+    <script src="js/storage.js"></script>
+    <script src="js/item-detail.js"></script>
+</body>
+</html>

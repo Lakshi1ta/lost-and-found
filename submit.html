@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Item - College Lost & Found</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <i data-lucide="map-pin" class="h-8 w-8 text-blue-600"></i>
+                    <span class="text-xl font-bold text-gray-900">College Lost & Found</span>
+                </a>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                    <a href="browse.html" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md text-sm font-medium transition-colors">Browse Items</a>
+                    <a href="submit.html" class="text-blue-600 bg-blue-50 px-3 py-2 rounded-md text-sm font-medium">Report Item</a>
+                </div>
+
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-50">
+                    <i data-lucide="menu" class="h-6 w-6"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="bg-white border-b">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Report an Item</h1>
+            <p class="text-gray-600">Help reunite items with their owners by providing detailed information</p>
+        </div>
+    </div>
+
+    <!-- Form -->
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white rounded-lg shadow-sm p-6">
+            <form id="submit-form" class="space-y-6">
+                <!-- Status Selection -->
+                <div>
+                    <label class="text-base font-medium text-gray-900">What happened?</label>
+                    <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                        <div class="relative">
+                            <input
+                                type="radio"
+                                id="lost"
+                                name="status"
+                                value="lost"
+                                class="sr-only peer"
+                                required
+                            />
+                            <label
+                                for="lost"
+                                class="flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 peer-checked:bg-red-50 peer-checked:border-red-300 peer-checked:text-red-700 transition-colors"
+                            >
+                                <i data-lucide="search" class="h-5 w-5 mr-2"></i>
+                                I Lost Something
+                            </label>
+                        </div>
+                        <div class="relative">
+                            <input
+                                type="radio"
+                                id="found"
+                                name="status"
+                                value="found"
+                                class="sr-only peer"
+                                required
+                            />
+                            <label
+                                for="found"
+                                class="flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 peer-checked:bg-green-50 peer-checked:border-green-300 peer-checked:text-green-700 transition-colors"
+                            >
+                                <i data-lucide="check-circle" class="h-5 w-5 mr-2"></i>
+                                I Found Something
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item Details -->
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                    <div>
+                        <label for="title" class="block text-sm font-medium text-gray-700">Item Title *</label>
+                        <input
+                            type="text"
+                            id="title"
+                            name="title"
+                            required
+                            placeholder="e.g., iPhone 14 Pro, Black Backpack"
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                        />
+                    </div>
+
+                    <div>
+                        <label for="category" class="block text-sm font-medium text-gray-700">Category *</label>
+                        <select
+                            id="category"
+                            name="category"
+                            required
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                        >
+                            <option value="">Select Category</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="bags">Bags</option>
+                            <option value="books">Books</option>
+                            <option value="clothing">Clothing</option>
+                            <option value="jewelry">Jewelry</option>
+                            <option value="keys">Keys</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="description" class="block text-sm font-medium text-gray-700">Description *</label>
+                    <textarea
+                        id="description"
+                        name="description"
+                        rows="4"
+                        required
+                        placeholder="Provide a detailed description including color, brand, size, distinctive features, etc."
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                    ></textarea>
+                </div>
+
+                <div>
+                    <label for="location" class="block text-sm font-medium text-gray-700">Location *</label>
+                    <input
+                        type="text"
+                        id="location"
+                        name="location"
+                        required
+                        placeholder="Where was it lost/found? (e.g., Library 3rd Floor, Student Center)"
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                    />
+                </div>
+
+                <div>
+                    <label for="date" class="block text-sm font-medium text-gray-700">Date *</label>
+                    <input
+                        type="date"
+                        id="date"
+                        name="date"
+                        required
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                    />
+                </div>
+
+                <!-- Image Upload -->
+                <div>
+                    <label for="image" class="block text-sm font-medium text-gray-700">Photo (Optional)</label>
+                    <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                        <div class="space-y-1 text-center">
+                            <i data-lucide="upload" class="mx-auto h-12 w-12 text-gray-400"></i>
+                            <div class="flex text-sm text-gray-600">
+                                <label
+                                    for="image"
+                                    class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500"
+                                >
+                                    <span>Upload a file</span>
+                                    <input id="image" name="image" type="file" accept="image/*" class="sr-only" />
+                                </label>
+                                <p class="pl-1">or drag and drop</p>
+                            </div>
+                            <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+                        </div>
+                    </div>
+                    <div id="image-preview" class="mt-4 hidden">
+                        <img id="preview-img" class="h-32 w-32 object-cover rounded-lg" />
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="border-t pt-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">Contact Information</h3>
+                    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700">Your Name *</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                required
+                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                            />
+                        </div>
+
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email Address *</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                required
+                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number (Optional)</label>
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                        />
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="pt-6">
+                    <button
+                        type="submit"
+                        class="w-full bg-blue-600 text-white px-4 py-3 rounded-lg font-medium hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-colors"
+                    >
+                        Submit Report
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Load storage first, then submit script -->
+    <script src="js/storage.js"></script>
+    <script src="js/submit.js"></script>
+</body>
+</html>
